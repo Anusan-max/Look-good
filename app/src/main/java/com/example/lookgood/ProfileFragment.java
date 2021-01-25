@@ -1,7 +1,6 @@
 package com.example.lookgood;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.gms.common.internal.service.Common;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,7 +26,7 @@ public class ProfileFragment extends Fragment {
     FirebaseDatabase rootNode;
     DatabaseReference reference;
     View view;
-    UserHelperClass userModel;
+    User userModel;
 
     @Nullable
     @Override
@@ -51,7 +48,7 @@ public class ProfileFragment extends Fragment {
             reference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    userModel=  dataSnapshot.getValue(UserHelperClass.class);
+                    userModel=  dataSnapshot.getValue(User.class);
                     System.out.println(userModel.getName());
                     name.setText(userModel.name);
                     email.setText(userModel.email);
@@ -75,7 +72,7 @@ public class ProfileFragment extends Fragment {
                 String emailTxt = email.getText().toString();
                 String phoneTxt = phoneNumber.getText().toString();
 
-                UserHelperClass helperClass = new UserHelperClass(emailTxt,nameTxt, phoneTxt);
+                User helperClass = new User(emailTxt,nameTxt, phoneTxt);
                 reference.setValue(helperClass);
                 Toast.makeText(view.getContext().getApplicationContext(), "Enter something !", Toast.LENGTH_LONG).show();
             }

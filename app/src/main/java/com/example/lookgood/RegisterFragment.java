@@ -3,23 +3,16 @@ package com.example.lookgood;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -80,10 +73,8 @@ public class RegisterFragment extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            //  Toast.makeText(getActivity(), "User created", Toast.LENGTH_SHORT).show();
-                            // create user in profile (real time database )
                             FirebaseUser user = fAuth.getCurrentUser();
-                            UserHelperClass helperClass = new UserHelperClass(user.getUid(), email, name, phone);
+                            User helperClass = new User(user.getUid(), email, name, phone);
 
                             reference.child(user.getUid()).setValue(helperClass);
                             Intent inten = new Intent(RegisterFragment.this, LoginFragment.class);

@@ -13,12 +13,12 @@ import com.example.lookgood.databinding.CartRowBinding;
 import com.example.lookgood.models.CartItem;
 
 
-public class CartListAdapter extends ListAdapter<CartItem, CartListAdapter.CartVH> {
+public class CartsAdapter extends ListAdapter<CartItem, CartsAdapter.CartVH> {
 
-    private CartInterface cartInterface;
-    public CartListAdapter(CartInterface cartInterface) {
+    private CartInterface iCart;
+    public CartsAdapter(CartInterface iCart) {
         super(CartItem.itemCallback);
-        this.cartInterface = cartInterface;
+        this.iCart = iCart;
     }
 
     @NonNull
@@ -45,7 +45,7 @@ public class CartListAdapter extends ListAdapter<CartItem, CartListAdapter.CartV
             cartRowBinding.deleteProductButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    cartInterface.deleteItem(getItem(getAdapterPosition()));
+                    iCart.deleteItem(getItem(getAdapterPosition()));
                 }
             });
 
@@ -56,7 +56,7 @@ public class CartListAdapter extends ListAdapter<CartItem, CartListAdapter.CartV
                     if (quantity == getItem(getAdapterPosition()).getQuantity()) {
                         return;
                     }
-                    cartInterface.changeQuantity(getItem(getAdapterPosition()), quantity);
+                    iCart.changeQuantity(getItem(getAdapterPosition()), quantity);
                 }
 
                 @Override

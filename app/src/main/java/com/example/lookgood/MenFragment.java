@@ -15,8 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.lookgood.adapters.ShopListAdapter;
-import com.example.lookgood.databinding.FragmentKidsBinding;
+import com.example.lookgood.adapters.ShopsAdapter;
 import com.example.lookgood.databinding.FragmentMenBinding;
 import com.example.lookgood.models.Product;
 import com.example.lookgood.viewmodels.ShopViewModel;
@@ -25,10 +24,10 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.List;
 
 
-public class MenFragment extends Fragment implements ShopListAdapter.ShopInterface {
+public class MenFragment extends Fragment implements ShopsAdapter.ShopInterface {
 
     FragmentMenBinding fragmentShopBinding;
-    private ShopListAdapter shopListAdapter;
+    private ShopsAdapter shopsAdapter;
     private ShopViewModel shopViewModel;
     private NavController navController;
 
@@ -44,8 +43,8 @@ public class MenFragment extends Fragment implements ShopListAdapter.ShopInterfa
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        shopListAdapter = new ShopListAdapter(this);
-        fragmentShopBinding.MenRecyclerView.setAdapter(shopListAdapter);
+        shopsAdapter = new ShopsAdapter(this);
+        fragmentShopBinding.MenRecyclerView.setAdapter(shopsAdapter);
         fragmentShopBinding.MenRecyclerView.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL));
         fragmentShopBinding.MenRecyclerView.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.HORIZONTAL));
 
@@ -53,7 +52,7 @@ public class MenFragment extends Fragment implements ShopListAdapter.ShopInterfa
         shopViewModel.getMenProducts().observe(getViewLifecycleOwner(), new Observer<List<Product>>() {
             @Override
             public void onChanged(List<Product> products) {
-                shopListAdapter.submitList(products);
+                shopsAdapter.submitList(products);
             }
         });
 

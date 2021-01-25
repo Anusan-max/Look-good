@@ -1,21 +1,21 @@
 package com.example.lookgood;
 
-public class UserHelperClass {
+public class User {
     //TODO remove password
     String uid , email, name, phone;
 
-    public UserHelperClass() {
+    public User() {
 
     }
 
-    public UserHelperClass(String email, String name, String phone) {
+    public User(String email, String name, String phone) {
         this.email = email;
         this.name = name;
         this.phone = phone;
 
     }
 
-    public UserHelperClass(String uid, String email, String name, String phone) {
+    public User(String uid, String email, String name, String phone) {
         this.uid = uid;
         this.email = email;
         this.name = name;

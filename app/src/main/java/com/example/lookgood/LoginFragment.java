@@ -79,7 +79,7 @@ public class LoginFragment extends AppCompatActivity {
                             startActivity(inten);
 
                         }else {
-                            Toast.makeText(getApplicationContext(), "Enter something !", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Invalid User Name or Password !", Toast.LENGTH_LONG).show();
 
                         }
                     }

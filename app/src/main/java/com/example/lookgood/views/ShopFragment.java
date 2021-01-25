@@ -16,7 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.lookgood.R;
-import com.example.lookgood.adapters.ShopListAdapter;
+import com.example.lookgood.adapters.ShopsAdapter;
 import com.example.lookgood.databinding.FragmentShopBinding;
 import com.example.lookgood.models.Product;
 import com.example.lookgood.viewmodels.ShopViewModel;
@@ -25,10 +25,10 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.List;
 
 
-public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterface {
+public class ShopFragment extends Fragment implements ShopsAdapter.ShopInterface {
 
     FragmentShopBinding fragmentShopBinding;
-    private ShopListAdapter shopListAdapter;
+    private ShopsAdapter shopsAdapter;
     private ShopViewModel shopViewModel;
     private NavController navController;
 
@@ -44,8 +44,8 @@ public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterf
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        shopListAdapter = new ShopListAdapter(this);
-        fragmentShopBinding.shopRecyclerView.setAdapter(shopListAdapter);
+        shopsAdapter = new ShopsAdapter(this);
+        fragmentShopBinding.shopRecyclerView.setAdapter(shopsAdapter);
         fragmentShopBinding.shopRecyclerView.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL));
         fragmentShopBinding.shopRecyclerView.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.HORIZONTAL));
 
@@ -53,7 +53,7 @@ public class ShopFragment extends Fragment implements ShopListAdapter.ShopInterf
         shopViewModel.getProducts().observe(getViewLifecycleOwner(), new Observer<List<Product>>() {
             @Override
             public void onChanged(List<Product> products) {
-                shopListAdapter.submitList(products);
+                shopsAdapter.submitList(products);
             }
         });
 

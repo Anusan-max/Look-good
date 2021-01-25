@@ -14,19 +14,18 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DividerItemDecoration;
 
-import com.example.lookgood.adapters.ShopListAdapter;
+import com.example.lookgood.adapters.ShopsAdapter;
 import com.example.lookgood.databinding.FragmentKidsBinding;
-import com.example.lookgood.databinding.FragmentShopBinding;
 import com.example.lookgood.models.Product;
 import com.example.lookgood.viewmodels.ShopViewModel;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
-public class KidsFragment extends Fragment implements ShopListAdapter.ShopInterface {
+public class KidsFragment extends Fragment implements ShopsAdapter.ShopInterface {
 
     FragmentKidsBinding fragmentShopBinding;
-    private ShopListAdapter shopListAdapter;
+    private ShopsAdapter shopsAdapter;
     private ShopViewModel shopViewModel;
     private NavController navController;
 
@@ -42,8 +41,8 @@ public class KidsFragment extends Fragment implements ShopListAdapter.ShopInterf
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        shopListAdapter = new ShopListAdapter(this);
-        fragmentShopBinding.KidsRecyclerView.setAdapter(shopListAdapter);
+        shopsAdapter = new ShopsAdapter(this);
+        fragmentShopBinding.KidsRecyclerView.setAdapter(shopsAdapter);
         fragmentShopBinding.KidsRecyclerView.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL));
         fragmentShopBinding.KidsRecyclerView.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.HORIZONTAL));
 
@@ -51,7 +50,7 @@ public class KidsFragment extends Fragment implements ShopListAdapter.ShopInterf
         shopViewModel.getKidsProducts().observe(getViewLifecycleOwner(), new Observer<List<Product>>() {
             @Override
             public void onChanged(List<Product> products) {
-                shopListAdapter.submitList(products);
+                shopsAdapter.submitList(products);
             }
         });
 

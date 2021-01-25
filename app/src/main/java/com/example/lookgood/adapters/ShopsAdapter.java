@@ -1,7 +1,6 @@
 package com.example.lookgood.adapters;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -11,10 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.lookgood.databinding.ShopRowBinding;
 import com.example.lookgood.models.Product;
 
-public class ShopListAdapter extends ListAdapter<Product, ShopListAdapter.ShopViewHolder> {
+public class ShopsAdapter extends ListAdapter<Product, ShopsAdapter.ShopViewHolder> {
 
     ShopInterface shopInterface;
-    public ShopListAdapter(ShopInterface shopInterface) {
+    public ShopsAdapter(ShopInterface shopInterface) {
         super(Product.itemCallback);
         this.shopInterface = shopInterface;
     }
@@ -30,8 +29,8 @@ public class ShopListAdapter extends ListAdapter<Product, ShopListAdapter.ShopVi
 
     @Override
     public void onBindViewHolder(@NonNull ShopViewHolder holder, int position) {
-        Product product = getItem(position);
-        holder.shopRowBinding.setProduct(product);
+        Product item = getItem(position);
+        holder.shopRowBinding.setProduct(item);
     }
 
     class ShopViewHolder extends RecyclerView.ViewHolder {

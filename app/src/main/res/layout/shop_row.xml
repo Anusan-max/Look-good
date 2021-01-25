@@ -9,7 +9,7 @@
 
         <variable
             name="shopInterface"
-            type="com.example.lookgood.adapters.ShopListAdapter.ShopInterface" />
+            type="com.example.lookgood.adapters.ShopsAdapter.ShopInterface" />
 
     </data>
 

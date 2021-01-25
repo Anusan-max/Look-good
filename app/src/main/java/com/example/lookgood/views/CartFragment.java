@@ -16,7 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.lookgood.R;
-import com.example.lookgood.adapters.CartListAdapter;
+import com.example.lookgood.adapters.CartsAdapter;
 import com.example.lookgood.databinding.FragmentCartBinding;
 import com.example.lookgood.models.CartItem;
 import com.example.lookgood.viewmodels.ShopViewModel;
@@ -24,7 +24,7 @@ import com.example.lookgood.viewmodels.ShopViewModel;
 import java.util.List;
 
 
-public class CartFragment extends Fragment  implements CartListAdapter.CartInterface{
+public class CartFragment extends Fragment  implements CartsAdapter.CartInterface{
 
     private static final String TAG = "CartFragment";
     ShopViewModel shopViewModel;
@@ -49,15 +49,15 @@ public class CartFragment extends Fragment  implements CartListAdapter.CartInter
 
         navController = Navigation.findNavController(view);
 
-        final CartListAdapter cartListAdapter = new CartListAdapter(this);
-        fragmentCartBinding.cartRecyclerView.setAdapter(cartListAdapter);
+        final CartsAdapter cartsAdapter = new CartsAdapter(this);
+        fragmentCartBinding.cartRecyclerView.setAdapter(cartsAdapter);
         fragmentCartBinding.cartRecyclerView.addItemDecoration(new DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL));
 
         shopViewModel = new ViewModelProvider(requireActivity()).get(ShopViewModel.class);
         shopViewModel.getCart().observe(getViewLifecycleOwner(), new Observer<List<CartItem>>() {
             @Override
             public void onChanged(List<CartItem> cartItems) {
-                cartListAdapter.submitList(cartItems);
+                cartsAdapter.submitList(cartItems);
                 fragmentCartBinding.placeOrderButton.setEnabled(cartItems.size() > 0);
             }
         });
