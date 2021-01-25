@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="shopViewModel"
+            type="com.example.lookgood.viewmodels.ShopViewModel" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.ProductDetailFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/productImageView"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/cloth"
+                android:productImage="@{shopViewModel.product.imgUrl}"
+                />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <TextView
+                android:id="@+id/productNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{shopViewModel.product.name}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="4dp" />
+
+            <TextView
+                android:id="@+id/priceTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(shopViewModel.product.price) + `$` }"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="4dp" />
+
+            <TextView
+                android:id="@+id/availableTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{shopViewModel.product.available ? `Available` : `Out of stock`}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                android:textColor="@{shopViewModel.product.available ? @color/colorPrimary : @color/red}" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="95dp"
+                android:text="@{shopViewModel.product.description}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2"
+                android:textColor="@color/textSecondary" />
+
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="4dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:translationX="0dp">
+
+                <Button
+                    android:id="@+id/addToCartButton"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="@{shopViewModel.product.available}"
+                    android:onClick="@{() -> shopViewModel.addItemToCart(shopViewModel.product)}"
+                    android:text="Add to cart"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Caption" />
+
+                <ImageButton
+                    android:id="@+id/shareButton"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:translationX="175dp"
+                    app:srcCompat="@drawable/ic_menu_share" />
+
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <EditText
+                android:id="@+id/comment"
+                android:layout_width="279dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Comments" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_menu_send" />
+        </LinearLayout>
+
+            <ListView
+                android:id="@+id/commentsList"
+                android:layout_width="match_parent"
+                android:layout_height="88dp" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>
+

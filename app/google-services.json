@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "799204647508",
+    "project_id": "assignment-new-993b3",
+    "storage_bucket": "assignment-new-993b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799204647508:android:1c47f288e20c982190c3c1",
+        "android_client_info": {
+          "package_name": "com.example.lookgood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "799204647508-m8p6pu41bo1iobs6124t4dhe1qigkkqb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaMoKOO4qnGkPn8k2H4kG_oCZYT3y028I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "799204647508-m8p6pu41bo1iobs6124t4dhe1qigkkqb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

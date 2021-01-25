@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item android:title="User">
+        <menu>
+            <item
+                android:id="@+id/profileFragment"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Profile" />
+            <item
+                android:id="@+id/logOut"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Log Out" />
+
+        </menu>
+    </item>
+
+    <group android:checkableBehavior="single">
+        <item android:title="Shop">
+        <menu>
+        <item
+            android:id="@+id/shopFragment"
+            android:title="shop" />
+
+        <item
+            android:id="@+id/men"
+            android:title="Men" />
+        <item
+            android:id="@+id/women"
+            android:title="Women" />
+        <item
+            android:id="@+id/kids"
+            android:title="Kids" />
+        </menu>
+        </item>
+    </group>
+</menu>
