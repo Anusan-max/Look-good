@@ -74,7 +74,7 @@ public class ProfileFragment extends Fragment {
 
                 User helperClass = new User(emailTxt,nameTxt, phoneTxt);
                 reference.setValue(helperClass);
-                Toast.makeText(view.getContext().getApplicationContext(), "Enter something !", Toast.LENGTH_LONG).show();
+                Toast.makeText(view.getContext().getApplicationContext(), "Profile updated", Toast.LENGTH_LONG).show();
             }
         });
         return view;

@@ -7,31 +7,32 @@
         <menu>
             <item
                 android:id="@+id/profileFragment"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_baseline_update_24"
                 android:title="Profile" />
-            <item
-                android:id="@+id/logOut"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Log Out" />
 
         </menu>
     </item>
 
     <group android:checkableBehavior="single">
-        <item android:title="Shop">
+        <item
+            android:title="Shop">
         <menu>
         <item
             android:id="@+id/shopFragment"
+            android:icon="@drawable/ic_baseline_shopping_basket_24"
             android:title="shop" />
 
         <item
             android:id="@+id/men"
+            android:icon="@drawable/ic_baseline_directions_walk_24"
             android:title="Men" />
         <item
             android:id="@+id/women"
+            android:icon="@drawable/ic_baseline_downhill_skiing_24"
             android:title="Women" />
         <item
             android:id="@+id/kids"
+            android:icon="@drawable/ic_baseline_child_care_24"
             android:title="Kids" />
         </menu>
         </item>

@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -20,7 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterFragment extends AppCompatActivity {
-    EditText regName, regEmail, regPassword, regPhone;
+    TextInputLayout regName, regEmail, regPassword, regPhone;
     Button regBtn;
     FirebaseAuth fAuth;
     FirebaseDatabase rootNode;
@@ -44,10 +45,10 @@ public class RegisterFragment extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                String email = regEmail.getText().toString();
-                String password = regPassword.getText().toString();
-                String name = regName.getText().toString();
-                String phone = regPhone.getText().toString();
+                String email = regEmail.getEditText().getText().toString();
+                String password = regPassword.getEditText().getText().toString();
+                String name = regName.getEditText().getText().toString();
+                String phone = regPhone.getEditText().getText().toString();
 
                 if (TextUtils.isEmpty(email)) {
                     regEmail.setError("Email is Required");

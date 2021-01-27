@@ -11,9 +11,13 @@ import androidx.lifecycle.ViewModelProvider;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.lookgood.databinding.FragmentProductDetailBinding;
-import com.example.lookgood.viewmodels.ShopViewModel;
 
+import com.example.lookgood.R;
+import com.example.lookgood.adapters.ShopsAdapter;
+import com.example.lookgood.databinding.FragmentProductDetailBinding;
+import com.example.lookgood.models.Product;
+import com.example.lookgood.viewmodels.ShopViewModel;
+import com.google.android.material.snackbar.Snackbar;
 
 
 public class ProductDetailFragment extends Fragment {
@@ -21,7 +25,6 @@ public class ProductDetailFragment extends Fragment {
     ShopViewModel shopViewModel;
 
     public ProductDetailFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -58,6 +61,5 @@ public class ProductDetailFragment extends Fragment {
     private String getShareDetail() {
         return shopViewModel.getProduct().getValue().getName() + " is in offer for " +  shopViewModel.getProduct().getValue().getPrice() + " on LookGood App";
     }
-
 
 }

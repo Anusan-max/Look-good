@@ -61,17 +61,9 @@ public class KidsFragment extends Fragment implements ShopsAdapter.ShopInterface
     public void addItem(Product product) {
         boolean isAdded = shopViewModel.addItemToCart(product);
         if (isAdded) {
-            Snackbar.make(requireView(), product.getName() + " added to cart.", Snackbar.LENGTH_LONG)
-                    .setAction("Checkout", new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            navController.navigate(R.id.action_shopFragment_to_cartFragment);
-                        }
-                    })
-                    .show();
+            Snackbar.make(requireView(), product.getName() + " added to cart.", Snackbar.LENGTH_LONG).show();
         } else {
-            Snackbar.make(requireView(), "Already have the max quantity in cart.", Snackbar.LENGTH_LONG)
-                    .show();
+            Snackbar.make(requireView(), "Already have the max quantity in cart.", Snackbar.LENGTH_LONG).show();
         }
     }
 

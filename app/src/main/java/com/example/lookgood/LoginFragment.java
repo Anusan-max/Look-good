@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,12 +20,14 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginFragment extends AppCompatActivity {
 
-    EditText email,password;
+    TextInputLayout email,password;
     FirebaseAuth fAuth;
 
     @Override
@@ -33,22 +36,22 @@ public class LoginFragment extends AppCompatActivity {
 
         setContentView(R.layout.fragment_login);
 
-        Button register = findViewById(R.id.register);
-        Button login = findViewById(R.id.loginBtn);
+       TextView register = (TextView) findViewById(R.id.register);
+       Button login = findViewById(R.id.loginBtn);
 
-        email = findViewById(R.id.log_email);
-        password = findViewById(R.id.log_password);
+       email = findViewById(R.id.log_email);
+       password = findViewById(R.id.log_password);
 
-        fAuth = FirebaseAuth.getInstance();
+     fAuth = FirebaseAuth.getInstance();
 
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+       register.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
 
-            Intent inten = new Intent(LoginFragment.this,RegisterFragment.class);
-            startActivity(inten);
-            }
-        });
+           Intent inten = new Intent(LoginFragment.this,RegisterFragment.class);
+           startActivity(inten);
+           }
+       });
 
 
 
@@ -56,36 +59,36 @@ public class LoginFragment extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                final String emailText = email.getText().toString();
-                final String passwordText = password.getText().toString();
+                final String emailText = email.getEditText().getText().toString();
+                final String passwordText = password.getEditText().getText().toString();
 
-                if(TextUtils.isEmpty(emailText)) {
-                    email.setError("Email is Required");
-                    return;
-                }
+               if(TextUtils.isEmpty(emailText)) {
+                   email.setError("Email is Required");
+                   return;
+               }
 
-                if(TextUtils.isEmpty(passwordText)){
-                    password.setError("Password is Required");
-                    return;
-                }
+               if(TextUtils.isEmpty(passwordText)){
+                   password.setError("Password is Required");
+                   return;
+               }
 
-                fAuth.signInWithEmailAndPassword(emailText,passwordText).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()) {
-                            //  Toast.makeText(getActivity(), "User created", Toast.LENGTH_SHORT).show();
+               fAuth.signInWithEmailAndPassword(emailText,passwordText).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                   @Override
+                   public void onComplete(@NonNull Task<AuthResult> task) {
+                       if(task.isSuccessful()) {
+                           //  Toast.makeText(getActivity(), "User created", Toast.LENGTH_SHORT).show();
 
-                            Intent inten = new Intent(LoginFragment.this, NavDrawerActivity.class);
-                            startActivity(inten);
+                           Intent inten = new Intent(LoginFragment.this, NavDrawerActivity.class);
+                           startActivity(inten);
 
-                        }else {
-                            Toast.makeText(getApplicationContext(), "Invalid User Name or Password !", Toast.LENGTH_LONG).show();
+                       }else {
+                           Toast.makeText(getApplicationContext(), "Invalid User Name or Password !", Toast.LENGTH_LONG).show();
 
-                        }
-                    }
-                });
-            }
-        });
+                       }
+                   }
+               });
+           }
+       });
     }
 
 }
